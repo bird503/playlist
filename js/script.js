@@ -58,7 +58,7 @@ var myPlayList = [
 $( document ).ready(function() {
 	// everything inside this function happens as soon as the page loads!
 	displaySong(mySong)
-
+	displayList(myPlayList)
 
 });
 
@@ -67,20 +67,21 @@ $( document ).ready(function() {
 function displaySong(songObject){
 	var containerMove = "<div id='songInfo'></div>";
     $("body").append(containerMove);
-    $("#songInfo").append('<p>' + mySong["title"] + '</p>');
-    $("#songInfo").append('<p>' + mySong["artist"] + '</p');
-    $("#songInfo").append('<img src="' + mySong["imageURL"] + '">' +'</p>');
-    $("#songInfo").append('<a href="' + mySong["playURL"] + '">Click Here!' + '</a>');
+    $("#songInfo").append('<p>' + songObject["title"] + '</p>');
+    $("#songInfo").append('<p>' + songObject["artist"] + '</p');
+    $("#songInfo").append('<img src="' + songObject["imageURL"] + '">' +'</p>');
+    $("#songInfo").append('<a href="' + songObject["playURL"] + '">Click Here!' + '</a>');
 
 
 }
-
+//displaySong();
 // displayList takes in an array of song objects, and it uses the information from each song object
 //    to create an HTML element and append it to the playlist on the page
 function displayList(songsArray){
-
-
-
+	for (var i = 0; i < myPlayList.length; i++){
+	    // Remember to append HTML for the  imageURL and playURL!
+	    displaySong(myPlayList[i]);
+	}
 }
 
 // clearList removes all the content from the playlist on the page
@@ -93,7 +94,9 @@ function clearList(){
 // addSong takes inputs from the input boxes, organizes them into a new song object, and
 //    pushes a new song to the playlist array
 function addSong(){
-
-
-
+	$("#submit").(function(){
+	var titleGrab = $("#title").val();
+    var artistGrab = $("#artist").val();
+    var playlinkGrab = $("").val();
+    var imgGrab = $("").val()
 }
