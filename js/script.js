@@ -28,7 +28,7 @@ var mySong = {
 	"imageURL": "https://images-na.ssl-images-amazon.com/images/I/51cB3PoKceL._AC_US500_FMwebp_QL65_.jpg",
 	"playURL": "https://open.spotify.com/track/4v52HuhZqVV0eNpP6vzH5I",
 
-}
+};
 
 var myPlayList = [
 	{
@@ -50,26 +50,31 @@ var myPlayList = [
 		"playURL": "https://open.spotify.com/track/7cGfrVoC7G03XeXn7yflx5",
 	}
 
-]
+];
 
 
 
 // DOCUMENT READY FUNCTION
 $( document ).ready(function() {
+	displayList(myPlayList);
 	// everything inside this function happens as soon as the page loads!
-	displaySong(mySong)
-	displayList(myPlayList)
+	$("#submit").click(function(){
+	$(".clear").empty();
+	addSong();
+	displayList(myPlayList);
+	
+	});
 
 });
 
 // displaySong uses the properties in the songObject to create an HTML element for a single song
 //	  and appends the element to the playlist on the page
 function displaySong(songObject){
-	var containerMove = "<div id='songInfo'></div>";
+	var containerMove = "<div class='clear' id='songInfo'></div>";
     $("body").append(containerMove);
-    $("#songInfo").append('<p>' + songObject["title"] + '</p>');
+    $("#songInfo").append('<h3>' + songObject["title"] + '</h3>');
     $("#songInfo").append('<p>' + songObject["artist"] + '</p');
-    $("#songInfo").append('<img src="' + songObject["imageURL"] + '">' +'</p>');
+    $("#songInfo").append('<img src="' + songObject["imageURL"] + '">');
     $("#songInfo").append('<a href="' + songObject["playURL"] + '">Click Here!' + '</a>');
 
 
@@ -94,9 +99,21 @@ function clearList(){
 // addSong takes inputs from the input boxes, organizes them into a new song object, and
 //    pushes a new song to the playlist array
 function addSong(){
-	$("#submit").(function(){
+	
 	var titleGrab = $("#title").val();
     var artistGrab = $("#artist").val();
-    var playlinkGrab = $("").val();
-    var imgGrab = $("").val()
+    var playlinkGrab = $("#play-link").val();
+    var imgGrab = $("#album-image").val();
+    
+    var songHolder = {
+    	"title": titleGrab,
+    	"artist": artistGrab,
+    	"playURL": playlinkGrab,
+    	"imageURL": imgGrab
+    };
+    
+    
+	myPlayList.push(songHolder);
+	
+	
 }
